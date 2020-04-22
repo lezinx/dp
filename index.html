@@ -22,10 +22,8 @@ table {height: 150px; width:1300px; text-align: center;
 		    }
 		    return result;
 		}
-		// Create a new table with width = 5 & height = 5
-
 		function displayInventory(table) {
-			var HTML = `<TABLE id="MyTable" BORDER=ON><caption>Start</caption>`
+			var HTML = `<TABLE id="MyTable" BORDER=ON><caption>Random Table</caption>`
 		    for(x=0; x<=table[0].length-1; x++) {
 		        for(y=0; y<=table.length-1; y++){
 		            HTML += `<TD>${table[x][y]}</TD>`;
@@ -47,24 +45,19 @@ table {height: 150px; width:1300px; text-align: center;
 		       memo[i] = []
 		     }
 		     
-		    //First Number
 		    memo[0][x_axis-1] = A[0][x_axis-1]
 		    //TOP Row
 		    for (let i=y_axis-2 ; i>=0; i--){
 		      memo[0][i] = memo[0][i+1]+A[0][i]
-		      console.log(memo[0][i], "top row")
 		    }
-
-		    //Left Column
+			
 		    for (let i=1 ; i<y_axis; i++){
 		      memo[i][y_axis-1] = memo[i-1][y_axis-1]+A[i][y_axis-1]
-		      console.log(memo[i][y_axis-1], "right column")
 		    }   
 		  //Everything else
 		    for (let i=1; i<y_axis; i++){
 		      for (let k=x_axis-2; k>=0; k--){
 		         max_value = Math.max(memo[i-1][k], memo[i-1][k+1],memo[i][k+1]);
-		         console.log(memo[i-1][k], memo[i-1][k+1],memo[i][k+1], "max")
 		          if (max_value == memo[i-1][k]) {
 		            memo[i][k] = memo[i-1][k] + A[i][k]
 		          } 
@@ -76,7 +69,6 @@ table {height: 150px; width:1300px; text-align: center;
 		          }
 		      }   
 		    }
-		    console.log(JSON.stringify(memo))
 		    return memo
 		 }
 		
@@ -84,7 +76,7 @@ table {height: 150px; width:1300px; text-align: center;
 		    const _x = table.length
 		    const _y = table[0].length
 
-		    var HTML = `<TABLE id="MyResult" BORDER=ON><caption>Result</caption>`
+		    var HTML = `<TABLE id="MyResult" BORDER=ON><caption>Filled table</caption>`
 		    for(x=0; x<=table[0].length-1; x++) {
 		    for(y=0; y<=table.length-1; y++){
 		    HTML += `<TD id=${x}:${y}>${table[x][y]}</TD>`;
@@ -97,13 +89,13 @@ table {height: 150px; width:1300px; text-align: center;
 		    i = _x-1;
 		    j = 0;
 		    while(j <= _x-1 && i>=0) {
-						console.log(i, j)
+
 		        if (i == 0 && j == _x-1) {
 		           break;
 		        }
 		        else if (j == _x-1 && i!=0) {
 		          while(i >0 ) {
-								console.log(i,j)
+
 							
 								document.getElementById(`${i-1}:${j}`).style.backgroundColor = '#e0ffff'
 								document.getElementById(`${i-1}:${j}`).style.fontWeight = 'bold'
@@ -113,7 +105,6 @@ table {height: 150px; width:1300px; text-align: center;
 		        }
 		        else if (i == 0 && j!=_x-1) {
 		          while(j < _x-1) {
-		            console.log(i,j)
 								document.getElementById(`${i}:${j+1}`).style.backgroundColor = '#e0ffff'
 								document.getElementById(`${i}:${j+1}`).style.fontWeight = 'bold'
 		            j++;
